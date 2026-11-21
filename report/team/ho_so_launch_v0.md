@@ -17,6 +17,6 @@ Nhóm: Buffet · Lớp: L3A. Cột trạng thái: **Xong, có bằng chứng · 
 | Kiểm thử khoá chống trùng và đối soát sổ cái (ca 20, ca 7): 0 ca hoàn trùng, 0 thông báo thành công khi ghi sổ lỗi | Kỹ sư trưởng agent | 2026-12-04 |
 | Ký chấp nhận chênh 6 điểm (power 0,64 nếu thật là 5 điểm); đủ 20 + 20 nhân viên, mỗi người ≥ 299 yêu cầu | Giám đốc vận hành | 2026-12-04 |
 | Bật đủ 14 event có `trace_id` theo E1; sau tuần 1 thay phút xem lại, làm lại simulated bằng phút đo thật, tính lại chi phí | PM trợ lý hoàn phí | 2026-12-14 |
-| Có kế hoạch giảm xem lại theo bậc: giảm khi sửa + bỏ < 15%, mỗi lần ≤ 5 phút; xem lại 100% = 0,98× [simulated] | Trưởng nhóm CSKH | 2026-12-21 |
+| Phê duyệt sẵn kế hoạch giảm xem lại theo bậc trước ngày mở pilot, bắt đầu nới giảm từ tuần 2 (2026-12-14): giảm khi sửa + bỏ < 15%, mỗi lần ≤ 5 phút; xem lại 100% = 0,98× [simulated] | Trưởng nhóm CSKH | 2026-12-04 |
 
 **Đề xuất: Go có điều kiện** (nhóm trưởng đã chốt) — chỉ pilot noi_dia + hang_nang (0,38× đã cộng cố định [simulated]), không mở quoc_te và doi_tac. Còn ba số bất lợi: xem lại 100% chỉ còn 0,98× [simulated]; power 0,64 nếu tác động thật là 5 điểm; mở lại 7 ngày đã 3,97% trong phạm vi. Điều kiện, người phụ trách và ngày kiểm tra ở bảng trên. Ngày quyết định sau pilot: 2027-01-08.
