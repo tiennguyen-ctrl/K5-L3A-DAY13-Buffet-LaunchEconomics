@@ -31,6 +31,8 @@ Người gắn nhãn 1: Nguyễn Ngọc Sang · Người gắn nhãn 2: Đào Th
 
 **Tỉ lệ đồng thuận:** 20 / 20 = 100%
 
+**Bằng chứng bản gốc:** Hồ sơ hiện chưa dẫn hai bản nhãn riêng được hoàn thành trước khi so. Sang và Phương cần bổ sung đường dẫn bản gốc để đối chiếu; mức 100% trên đây là kết quả so hai cột trong bảng hiện có. Giữ nguyên các bộ nhãn gốc khi bổ sung bằng chứng.
+
 ## Quy tắc phân biệt cho các ca không trùng
 
 Mỗi ca không trùng một câu. Đồng thuận dưới 80% thì ghi định nghĩa đã viết lại.

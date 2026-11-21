@@ -20,6 +20,7 @@
 - Rà bảng khắc phục năm ca ở CP3: bổ sung dữ liệu xác nhận ghi có cho ca 14, khóa chống trùng xuyên yêu cầu cho ca 20, thời điểm gửi Zalo cho ca 16 và cách đo tiếp tục hội thoại sau từ chối âm thanh cho ca 11; thống nhất trường kiểm tra tiền hoàn ở ca 05 với E1.
 - Rà kế hoạch pilot: tách hoàn trùng thành luật dừng trong 30 phút; làm rõ cohort đủ theo dõi 7 ngày, dữ liệu chưa đủ và nhánh KHÔNG THÌ của các luật dừng.
 - Đồng bộ phần chỉ số và luật dừng trong hồ sơ launch; chuẩn bị thông tin nhóm chấm trong phiếu Gate 2a.
+- Đồng bộ phần C–E và đề xuất Go có điều kiện trong báo cáo nhóm; sửa giải thích giới hạn cỡ mẫu hiệu dụng khi chỉ có 20 nhân viên mỗi nhóm, tách đề xuất của nhóm khỏi kết quả duyệt chéo còn chờ.
 - Chưa bổ sung kết quả duyệt chéo vì chưa có hồ sơ nhóm được chấm. Hai bộ nhãn và mức đồng thuận đang có trong bảng lỗi cần được đối chiếu với bản gốc của hai người trước khi xác nhận quy trình độc lập.
 
 ## 4. Bằng chứng
@@ -29,7 +30,8 @@
 - [Bốn luật dừng và kế hoạch pilot](pilot_plan.yaml).
 - [Hồ sơ launch v0](ho_so_launch_v0.md).
 - [Phiếu chấm đang chờ hồ sơ nhóm bạn](phieu_cham.md).
-- Commit bằng chứng: bổ sung mã commit sau khi nhóm lưu các thay đổi vào Git.
+- [Commit `17e8ae2` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/17e8ae214c5aa6e74330bda7c3ae185ba08bf8a7): lưu báo cáo cá nhân, đặc tả event, bảng khắc phục và các sửa đổi luật dừng, hồ sơ launch, phiếu chấm, `TEAM.md`.
+- [Báo cáo nhóm](group_report.md): phần C–E, đề xuất và giới hạn cỡ mẫu đã rà bổ sung sau commit trên; mã commit của lần bổ sung này sẽ ghi khi lưu vào Git.
 
 ## 5. Công cụ AI đã dùng
 
@@ -40,4 +42,4 @@
 
 - Phần đặc tả đã có cách phát hiện đo được, trường dữ liệu để đối chiếu và một vai trò phụ trách cho mỗi ca; luật hoàn trùng đã tách khỏi thời gian chờ của chỉ số mở lại.
 - Giới hạn hiện tại: event mới là đặc tả cho pilot, chưa có bằng chứng triển khai logging; chưa có hồ sơ nhóm bạn để chấm; chưa xác minh được quy trình gắn nhãn độc lập từ hai bản gốc.
-- Trước khi nộp, tôi cần tự giải thích được từng cách đo, đối chiếu các phần có AI hỗ trợ và bổ sung bằng chứng gắn nhãn, duyệt chéo, commit khi có thực tế.
+- Trước khi nộp, tôi cần tự giải thích được từng cách đo và giới hạn cỡ mẫu, đối chiếu các phần có AI hỗ trợ và bổ sung bằng chứng gắn nhãn, duyệt chéo khi có thực tế.
