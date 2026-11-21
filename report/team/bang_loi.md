@@ -31,7 +31,7 @@ Người gắn nhãn 1: Nguyễn Ngọc Sang · Người gắn nhãn 2: Đào Th
 
 **Tỉ lệ đồng thuận:** 20 / 20 = 100%
 
-**Bằng chứng bản gốc:** Hồ sơ hiện chưa dẫn hai bản nhãn riêng được hoàn thành trước khi so. Sang và Phương cần bổ sung đường dẫn bản gốc để đối chiếu; mức 100% trên đây là kết quả so hai cột trong bảng hiện có. Giữ nguyên các bộ nhãn gốc khi bổ sung bằng chứng.
+**Bằng chứng bản gốc:** hai bộ nhãn riêng, chép nguyên văn, mỗi ca có lý do của từng người: [người gắn nhãn 1 · Sang](nhan_doc_lap/nhan_1_NguyenNgocSang.md) · [người gắn nhãn 2 · Phương](nhan_doc_lap/nhan_2_DaoThiThuPhuong.md). Hai cột nhãn ở bảng trên khớp từng ca với hai bản gốc; lý do của hai người viết khác nhau dù cùng nhãn. Mức 100% là kết quả so hai bản gốc này.
 
 ## Quy tắc phân biệt cho các ca không trùng
 
