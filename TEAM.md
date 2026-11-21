@@ -6,7 +6,7 @@
 - Lớp: L3A
 - Repo nhóm: `K5-L3A-DAY13-Buffet-LaunchEconomics` (xem [SUBMISSION.md](SUBMISSION.md))
 - URL repo: https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics
-- Nhánh nộp: `main`; commit chốt: (điền sau khi push lần cuối)
+- Nhánh nộp: `main`; commit chốt nội dung: `1426fa9` (các commit sau chỉ bổ sung ghi chú, nếu có)
 - Phân công chi tiết, thứ tự chờ nhau: [PHAN_CONG.md](PHAN_CONG.md)
 
 ## Thành viên
