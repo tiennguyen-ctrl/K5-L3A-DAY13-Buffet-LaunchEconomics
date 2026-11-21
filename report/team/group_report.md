@@ -28,7 +28,7 @@ Dựng hồ sơ launch v0 cho trợ lý hoàn phí của LogiX-VN (dữ liệu g
 - Xem lại 100% (noi_dia + hang_nang): 0,98× (1,03× nếu làm lại 15,3 phút/ca) [simulated], gần như không tiết kiệm được gì. Giới hạn chạy 2 lần rẻ nhất cho cả hệ thống (6.901.220 đ [simulated]).
 - Cỡ mẫu pilot: chia theo yêu cầu cần 1.251/nhóm, nhưng chia theo nhân viên (20 + 20) chỉ đủ cho mức chênh 6 điểm (power khoảng 0,64 nếu tác động thật là 5 điểm).
 - **Đề xuất của nhóm: Go có điều kiện** (nhóm trưởng Nguyễn Trần Tiến chốt) cho noi_dia + hang_nang, chi phí cộng cố định 4.599 đ/việc thành công = 0,38× của 12.000 đ [simulated]. Trước pilot cần kiểm thử chống hoàn trùng và báo thành công sai, xác nhận nhân sự/lưu lượng cho thiết kế chênh 6 điểm, bật event và chốt kế hoạch giảm xem lại. Người phụ trách, ngày kiểm tra và ngày quyết định 2027-01-08 ghi trong [hồ sơ launch](ho_so_launch_v0.md).
-- **Duyệt chéo: Chưa có kết quả.** [Phiếu chấm](phieu_cham.md) đang chờ phân công và hồ sơ nhóm bạn; điểm, quyết định và phản hồi hội đồng dành cho nhóm mình sẽ được bổ sung theo bằng chứng thực tế.
+- **Duyệt chéo:** đã có [bản chấm đề xuất ALOALO](phieu_cham.md) tại commit `8a485ea`, 20/30 điểm C6–C8, Go có điều kiện; chờ Sang và Phương đối chiếu để chốt, chưa có câu trả lời thực tế của ALOALO. Phản hồi của hội đồng dành cho Buffet vẫn chờ bổ sung theo thực tế.
 
 ## 5. Khó khăn và cách xử lý
 

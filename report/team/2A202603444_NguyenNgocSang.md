@@ -21,7 +21,7 @@
 - Rà kế hoạch pilot: tách hoàn trùng thành luật dừng trong 30 phút; làm rõ cohort đủ theo dõi 7 ngày, dữ liệu chưa đủ và nhánh KHÔNG THÌ của các luật dừng.
 - Đồng bộ phần chỉ số và luật dừng trong hồ sơ launch; chuẩn bị thông tin nhóm chấm trong phiếu Gate 2a.
 - Đồng bộ phần C–E và đề xuất Go có điều kiện trong báo cáo nhóm; sửa giải thích giới hạn cỡ mẫu hiệu dụng khi chỉ có 20 nhân viên mỗi nhóm, tách đề xuất của nhóm khỏi kết quả duyệt chéo còn chờ.
-- Chưa bổ sung kết quả duyệt chéo vì chưa có hồ sơ nhóm được chấm. Hai bộ nhãn và mức đồng thuận đang có trong bảng lỗi cần được đối chiếu với bản gốc của hai người trước khi xác nhận quy trình độc lập.
+- Bổ sung bản chấm đề xuất cho ALOALO tại commit `8a485ea`: 20/30 điểm hội đồng, Go có điều kiện, kèm nguồn bằng chứng, phép kiểm số và câu hỏi về cửa sổ mở lại 7 ngày. Chờ Sang và Phương đối chiếu để chốt; chưa có câu trả lời thực tế của ALOALO. Hai bộ nhãn và mức đồng thuận của Buffet vẫn cần đối chiếu bản gốc trước khi xác nhận quy trình độc lập.
 
 ## 4. Bằng chứng
 
@@ -29,17 +29,17 @@
 - [Bảng khắc phục năm ca](bang_loi.md#bảng-khắc-phục-cho-5-ca-mỗi-loại-một-ca).
 - [Bốn luật dừng và kế hoạch pilot](pilot_plan.yaml).
 - [Hồ sơ launch v0](ho_so_launch_v0.md).
-- [Phiếu chấm đang chờ hồ sơ nhóm bạn](phieu_cham.md).
+- [Phiếu chấm đề xuất cho ALOALO](phieu_cham.md), có ghim commit của repo được chấm và phân biệt điểm đề xuất với kết quả trao đổi thực tế.
 - [Commit `17e8ae2` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/17e8ae214c5aa6e74330bda7c3ae185ba08bf8a7): lưu báo cáo cá nhân, đặc tả event, bảng khắc phục và các sửa đổi luật dừng, hồ sơ launch, phiếu chấm, `TEAM.md`.
 - [Commit `8b424d9` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8b424d9d7326f1b62b89ed2cfb0df5ca8cd43d2c): cập nhật phần C–E, đề xuất Go có điều kiện và giới hạn cỡ mẫu trong [báo cáo nhóm](group_report.md); bổ sung hai chỉ số vào hồ sơ launch, đồng bộ trạng thái chờ đối chiếu nhãn gốc và chuẩn bị câu hỏi duyệt chéo.
 
 ## 5. Công cụ AI đã dùng
 
-- ChatGPT/Codex hỗ trợ gợi ý nhãn và lý do cho 20 ca CP3, soạn nháp E1, rà bảng khắc phục, luật dừng và sự thống nhất giữa các file hồ sơ. Nội dung có AI hỗ trợ cần được người phụ trách tự kiểm tra; không dùng bản gợi ý để chứng minh đã thực hiện gắn nhãn độc lập.
+- ChatGPT/Codex hỗ trợ gợi ý nhãn và lý do cho 20 ca CP3, soạn nháp E1, rà bảng khắc phục, luật dừng và sự thống nhất giữa các file hồ sơ; đọc repo ALOALO, tính kiểm từ CSV và soạn bản chấm đề xuất theo C6–C8. Nội dung có AI hỗ trợ cần được người phụ trách tự kiểm tra; không dùng bản gợi ý để chứng minh đã thực hiện gắn nhãn độc lập hay đã trao đổi với nhóm được chấm.
 - Cách tự kiểm trước khi nộp: đối chiếu nhãn với đề và bản gốc của hai người; lần theo tử số, mẫu số, khóa nối và thời gian quan sát của từng chỉ số; phân biệt ghi sổ với ghi có, đóng ticket với gửi thông báo; kiểm tra từng luật có đủ NẾU – TRONG – THÌ – KHÔNG THÌ.
 
 ## 6. Tự đánh giá
 
 - Phần đặc tả đã có cách phát hiện đo được, trường dữ liệu để đối chiếu và một vai trò phụ trách cho mỗi ca; luật hoàn trùng đã tách khỏi thời gian chờ của chỉ số mở lại.
-- Giới hạn hiện tại: event mới là đặc tả cho pilot, chưa có bằng chứng triển khai logging; chưa có hồ sơ nhóm bạn để chấm; chưa xác minh được quy trình gắn nhãn độc lập từ hai bản gốc.
+- Giới hạn hiện tại: event mới là đặc tả cho pilot, chưa có bằng chứng triển khai logging; phiếu ALOALO mới là bản chấm đề xuất, chưa có phản hồi của nhóm bạn; chưa xác minh được quy trình gắn nhãn độc lập từ hai bản gốc.
 - Trước khi nộp, tôi cần tự giải thích được từng cách đo và giới hạn cỡ mẫu, đối chiếu các phần có AI hỗ trợ và bổ sung bằng chứng gắn nhãn, duyệt chéo khi có thực tế.

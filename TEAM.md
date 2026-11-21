@@ -83,11 +83,12 @@ Sao chép mục dưới đây cho từng thành viên.
 - Rà cách phát hiện và khắc phục năm ca trong `bang_loi.md`; phân biệt ghi sổ với ghi có, giờ đóng ticket với giờ gửi thông báo và bổ sung dữ liệu xử lý đầu vào không hỗ trợ.
 - Rà luật dừng trong `pilot_plan.yaml`, tách hoàn trùng để dừng trong 30 phút và làm rõ thời gian theo dõi của chỉ số mở lại; đồng bộ hồ sơ launch.
 - Rà báo cáo nhóm: cập nhật phần C–E, đề xuất Go có điều kiện và giới hạn cỡ mẫu hiệu dụng; tách kết quả duyệt chéo còn chờ khỏi đề xuất của nhóm.
-- Chuẩn bị phiếu chấm; chưa chấm nhóm bạn do chưa có hồ sơ. Kết quả gắn nhãn độc lập cần đối chiếu hai bản gốc trước khi xác nhận.
+- Soạn bản chấm đề xuất ALOALO tại commit `8a485ea`, 20/30 điểm hội đồng và Go có điều kiện, có Codex hỗ trợ đọc hồ sơ và tính kiểm; chờ Sang và Phương chốt, chưa có phản hồi của ALOALO. Kết quả gắn nhãn độc lập cần đối chiếu hai bản gốc trước khi xác nhận.
 
 ### Bằng chứng
 
 - [Báo cáo cá nhân và công cụ AI đã dùng](report/team/2A202603444_NguyenNgocSang.md).
+- [Phiếu chấm đề xuất ALOALO và bằng chứng theo commit](report/team/phieu_cham.md).
 - [Đặc tả chỉ số và event](report/team/chi_so.md), [bảng khắc phục](report/team/bang_loi.md), [luật dừng pilot](report/team/pilot_plan.yaml), [hồ sơ launch](report/team/ho_so_launch_v0.md).
 - [Commit `17e8ae2` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/17e8ae214c5aa6e74330bda7c3ae185ba08bf8a7): báo cáo cá nhân, đặc tả event, bảng khắc phục, luật dừng và hồ sơ liên quan.
 - [Commit `8b424d9` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8b424d9d7326f1b62b89ed2cfb0df5ca8cd43d2c): cập nhật phần C–E, đề xuất và giới hạn cỡ mẫu trong [báo cáo nhóm](report/team/group_report.md); bổ sung hai chỉ số vào hồ sơ launch, đồng bộ trạng thái bằng chứng nhãn và chuẩn bị câu hỏi duyệt chéo.
