@@ -46,7 +46,7 @@ Công cụ nào, dùng vào việc gì, bạn tự kiểm tra kết quả ra sao
 - Claude Code (Claude Opus 5.5, trong VS Code):
   - Soạn nháp từ số nhóm đã tính (`bang_chi_phi.md`, `chi_so.md`, `pilot_plan.yaml`): 7 mục và dòng đề xuất của `ho_so_launch_v0.md`; D2 và 3 luật dừng; 3 dòng rủi ro kinh tế (E2); `group_report.md` mục 5, 7, 8; phần lớn báo cáo cá nhân này.
   - Chép hai bộ nhãn (của tôi và của Sang) vào `bang_loi.md`, đếm số ca trùng; gộp bảng khắc phục của hai người thành 5 ca, thống nhất tên vai trò phụ trách và thêm tên event.
-- Cách tự kiểm: đối chiếu số trong hồ sơ với output `lab13.py` và `bang_chi_phi.md` (4.472 đ, 978 việc, 4.373.585 đ, khớp số đáp án trong tài liệu hướng dẫn); tự tính lại 5.865 đ = (4.373.585 + 222 × 12.000) / 1.200; kiểm `pilot_plan.yaml` bằng `yaml.safe_load` và không còn dấu `?`; `grep -rni production report/team` không in gì; nhờ Sang rà luật dừng và bảng khắc phục, Tiến chốt đề xuất.
+- Cách tự kiểm: đối chiếu số trong hồ sơ với output `lab13.py` và `bang_chi_phi.md` (4.472 đ, 978 việc, 4.373.585 đ, khớp số đáp án trong tài liệu hướng dẫn); tự tính lại 5.865 đ = (4.373.585 + 222 × 12.000) / 1.200; kiểm `pilot_plan.yaml` bằng `yaml.safe_load` và không còn dấu `?`; rà từ cấm theo checklist SUBMISSION.md, không còn từ cấm trong `report/team`; nhờ Sang rà luật dừng và bảng khắc phục, Tiến chốt đề xuất.
 - Không dùng AI để gắn nhãn 20 ca lỗi hay chấm nhóm bạn.
 
 ## 6. Tự đánh giá
