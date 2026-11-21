@@ -61,11 +61,15 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Đối chiếu A2 và B1. Chi phí xem lại A2 là 890 phút × 2.000 đ = 1.780.000 đ [simulated]. Ở B1, mức giảm bằng một nửa mức tăng khi tính trước khi làm tròn.
+- Triển khai D1 với hỗ trợ của Codex. Tính năm câu cỡ mẫu, tỉ lệ mở lại trong 7 ngày và điền thông số cỡ mẫu vào `pilot_plan.yaml`. Phương án chia theo nhân viên cần 20 người mỗi nhóm và ít nhất 299 yêu cầu mỗi người để phát hiện chênh lệch 6 điểm phần trăm.
+- Triển khai E1 với hỗ trợ của Codex. Tính và ghi ba chỉ số chạy thử trên dữ liệu giả lập vào `chi_so.md` (82,83%, 27,12% và 4,25%).
 
 ### Bằng chứng
 
-- (commit, file, output)
+- [Bảng chi phí và mục Kiểm số](report/team/bang_chi_phi.md#kiểm-số)
+- [Commit D1/E1 `8fec924`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8fec9246cee26c2492d61cfd6d6b325decec0bc7) · [Mã tính toán](src/lab13.py) · [Kế hoạch pilot](report/team/pilot_plan.yaml) · [Bảng chỉ số](report/team/chi_so.md)
+- [Báo cáo cá nhân](report/team/2A202603459_PhanNhatTruong.md)
 
 ## Nguyễn Ngọc Sang - 2A202603444
 
