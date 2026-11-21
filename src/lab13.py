@@ -19,17 +19,17 @@ BASELINE = 12000    # đồng cho 1 yêu cầu khi nhân viên tự làm (6 phú
 def so_lan_chay_ky_vong(p, k=None):
     """Số lần chạy trung bình cho 1 yêu cầu khi mỗi lần đúng với xác suất p.
     k = số lần chạy tối đa; k=None nghĩa là chạy lại đến khi đúng."""
-    raise NotImplementedError('VIẾT Ở ĐÂY')
+    return 1 / p if k is None else (1 - (1 - p) ** k) / p
 
 
 def ti_le_thanh_cong(p, k=None):
     """Xác suất yêu cầu thành công sau tối đa k lần chạy."""
-    raise NotImplementedError('VIẾT Ở ĐÂY')
+    return 1.0 if k is None else 1 - (1 - p) ** k
 
 
 def he_so_chi_phi_moi_viec_thanh_cong(p, k=None):
     """Chi phí mỗi việc thành công, tính bằng bội số của giá một lần chạy."""
-    raise NotImplementedError('VIẾT Ở ĐÂY')
+    return so_lan_chay_ky_vong(p, k) / ti_le_thanh_cong(p, k)
 
 
 def kiem_tra_dap_an_biet_truoc():
@@ -50,7 +50,24 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
     - thanh_cong: số yêu cầu có ket_qua == 'thanh_cong'.
     - Các tham số giá/hệ số/max_lan_chay dùng cho Nhiệm vụ B (độ nhạy, giới hạn số lần chạy); giữ mặc định ở A2.
     """
-    raise NotImplementedError('VIẾT Ở ĐÂY')
+    reqs = reqs.copy()
+    runs = runs[runs['request_id'].isin(reqs['request_id'])]
+    if max_lan_chay is not None:  # dùng cho B1, B3
+        runs = runs[runs['attempt'] <= max_lan_chay]
+        vuot = reqs['so_lan_chay'] > max_lan_chay
+        reqs.loc[vuot, 'ket_qua'] = 'chuyen_nhan_vien'
+        reqs.loc[vuot, ['phut_xem_lai_simulated', 'phut_lam_lai_simulated']] = 0
+    tien_token = runs['tokens_in'] / 1000 * gia_vao + runs['tokens_out'] / 1000 * gia_ra
+    tien_tool = runs['tool_calls'] * gia_tool
+    xem_lai = reqs['phut_xem_lai_simulated'].sum() * luong_phut * he_so_xem_lai
+    lam_lai = reqs['phut_lam_lai_simulated'].sum() * luong_phut * he_so_lam_lai
+    tong = tien_token.sum() + tien_tool.sum() + xem_lai + lam_lai
+    thanh_cong = (reqs['ket_qua'] == 'thanh_cong').sum()
+    return dict(token=tien_token.sum(), tool=tien_tool.sum(),
+                chay_lai=(tien_token + tien_tool)[runs['attempt'] > 1].sum(),
+                xem_lai=xem_lai, lam_lai=lam_lai, tong=tong,
+                thanh_cong=thanh_cong, cps=tong / thanh_cong,
+                hoa_don_moi_yc=(tien_token.sum() + tien_tool.sum()) / len(reqs))
 
 
 if __name__ == '__main__':
