@@ -4,25 +4,34 @@ Báo cáo ngắn, tối đa 2 trang. Số liệu chi tiết nằm trong các fil
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
-- Lớp:
+- Tên nhóm: Buffet
+- Lớp: L3A
 - Thành viên: xem `TEAM.md`
 
 ## 2. Mục tiêu và cách tiếp cận
 
-...
+Dựng hồ sơ launch v0 cho trợ lý hoàn phí của LogiX-VN (dữ liệu giả lập) để trả lời bốn câu: có đáng chạy không, nhân viên có dùng không, khi hỏng thì sao, pilot thiết kế thế nào. Nhóm chia vai theo `TEAM.md` và `PHAN_CONG.md`: Tiến viết code A, B rồi kiểm số; Trường kiểm số rồi viết code D, E; Sang và Phương gắn nhãn lỗi độc lập, Phương giữ hồ sơ. Mỗi bảng số đều có người kiểm độc lập trước khi ghi "khớp".
 
 ## 3. Giải pháp
 
 Tóm tắt cách nhóm làm từng nhiệm vụ A–E và link tới file hồ sơ tương ứng.
 
-...
+- **A (chi phí mỗi việc thành công):** `src/lab13.py` (hàm `mo_hinh`) tính từ trace; tử số cộng mọi lần chạy kể cả lần lỗi, mẫu số chỉ đếm `thanh_cong`. Chi tiết: [bang_chi_phi.md](bang_chi_phi.md) (A1–A4).
+- **B (độ nhạy):** gọi lại `mo_hinh` cho 9 kịch bản, một cặp, giới hạn 1/2/3 lần chạy và xem lại 100%. Chi tiết: [bang_chi_phi.md](bang_chi_phi.md) (B1–B4).
+- **C (bảng lỗi):** [bang_loi.md](bang_loi.md) — (Sang, Phương điền kết quả đồng thuận và bảng khắc phục).
+- **D (pilot):** [pilot_plan.yaml](pilot_plan.yaml) — (Trường, Phương điền sau khi hoàn thành).
+- **E (chỉ số, rủi ro, hồ sơ):** [chi_so.md](chi_so.md), [ho_so_launch_v0.md](ho_so_launch_v0.md) — (điền sau khi hoàn thành).
 
 ## 4. Kết quả
 
 Con số chính (ghi nhãn `simulated` khi cần) và đề xuất cuối của `ho_so_launch_v0.md`. Kết quả duyệt chéo nhóm nhận được từ hội đồng.
 
-...
+- Chi phí mỗi việc thành công: **4.472 đ** [simulated], gấp 16,3 lần hoá đơn token chia số yêu cầu (274,7 đ); 978 việc thành công. So với nhân viên tự làm (cả hệ thống, gồm phần chuyển nhân viên): 5.865 đ/yêu cầu = 0,49× của 12.000 đ [simulated].
+- Theo loại: noi_dia 0,22×, hang_nang 0,69×, quoc_te 1,88×, doi_tac 0,85× [simulated]. quoc_te và doi_tac không đưa vào phạm vi pilot.
+- Ba yếu tố nhạy nhất [simulated]: số ca làm lại (+51,8%), tỉ lệ xem lại (+40,7%), lương nhân viên (+23,1%). Giá token chỉ +5,6%.
+- Xem lại 100% (noi_dia + hang_nang): 0,98× (1,03× nếu làm lại 15,3 phút/ca) [simulated], gần như không tiết kiệm được gì. Giới hạn chạy 2 lần rẻ nhất cho cả hệ thống (6.901.220 đ [simulated]).
+- Cỡ mẫu pilot: chia theo yêu cầu cần 1.251/nhóm, nhưng chia theo nhân viên (20 + 20) chỉ đủ cho mức chênh 6 điểm (power khoảng 0,64 nếu tác động thật là 5 điểm).
+- Đề xuất cuối và kết quả duyệt chéo: (điền sau khi hoàn thành `ho_so_launch_v0.md` và buổi duyệt chéo).
 
 ## 5. Khó khăn và cách xử lý
 
