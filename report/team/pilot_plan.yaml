@@ -3,11 +3,14 @@
 # Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
+#   a) Chia theo yêu cầu: kiểm định hai phía cho 0,70 so với 0,75 cần 1.251 yêu cầu mỗi nhóm.
+#   b) Theo nhân viên, m = 75: DE = 1 + 74 × 0,02 = 2,48. Làm tròn lên được 3.103 yêu cầu
+#      mỗi nhóm, tương đương 42 nhân viên mỗi nhóm. Cần 84 người nhưng chỉ có 40.
+#   c) 20 nhân viên mỗi nhóm: cỡ mẫu hiệu dụng < 20 / 0,02 = 1.000, dưới ngưỡng 1.251.
+#   d) 6 depot mỗi nhóm: cỡ mẫu hiệu dụng < 6 / 0,02 = 300, dưới ngưỡng 1.251.
+#   e) Chênh 6 điểm: cần 859 yêu cầu hiệu dụng mỗi nhóm. Với 20 người mỗi nhóm,
+#      20m / (1 + (m − 1) × 0,02) ≥ 859 khi m ≥ 299. Khi đó DE = 6,96,
+#      và 5.980 yêu cầu thực tế mỗi nhóm cho khoảng 859,20 yêu cầu hiệu dụng.
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
 #   1. Đối chứng chạy cùng thời gian:
@@ -16,27 +19,30 @@
 #   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
 #   5. Ít nhất 20 cụm mỗi nhóm:
 #
-# Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
+# Phương án D1 đề xuất: chia theo nhân viên để giảm ảnh hưởng gián tiếp giữa hai nhóm.
+# Thiết kế nhắm chênh 6 điểm với 20 nhân viên mỗi nhóm và ít nhất 299 yêu cầu mỗi người.
+# Nếu chênh lệch thật chỉ 5 điểm, power xấp xỉ 0,64.
 #
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+# Tỉ lệ mở lại trong 7 ngày trên dữ liệu giả lập: 4,25% (51/1.200) toàn bộ
+# và 3,97% (39/982) trong phạm vi noi_dia + hang_nang.
 
 pilot:
   owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
   scope: "?"                      # loại yêu cầu nào, depot nào; dựa vào kết quả A3
   assignment:
-    unit: "?"                     # request | staff | depot
+    unit: staff
     control_share: 0.5
     randomized: true
   rollout: [0.10, 0.25, 0.50]     # mỗi bước một tuần
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
-    mde: 0.05
+    mde: 0.06
     alpha: 0.05
     power: 0.80
-    n_per_arm: "?"
-    design_effect: "?"            # 1 nếu chia theo yêu cầu
-    clusters_per_arm: "?"         # để trống nếu chia theo yêu cầu
+    n_per_arm: 859                # yêu cầu hiệu dụng, tương ứng 5.980 yêu cầu thực tế mỗi nhóm
+    design_effect: 6.96
+    clusters_per_arm: 20
   identifiability:
     concurrent_control: "?"
     spillover_risk: "?"

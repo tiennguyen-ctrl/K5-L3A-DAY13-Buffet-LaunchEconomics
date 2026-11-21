@@ -1,9 +1,11 @@
 """Lab 13 · Định giá agent và lập kế hoạch pilot (Gate 2a) — bài làm của nhóm (file nộp).
-Chạy trong thư mục src/: python3 lab13.py   (cần pandas; Nhiệm vụ D cần thêm statsmodels)
+Chạy trong thư mục src/: python3 lab13.py   (cần pandas)
 Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TODO CP1…CP4). Dữ liệu trong hai file CSV là giả lập.
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
+
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -70,6 +72,84 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
                 hoa_don_moi_yc=(tien_token.sum() + tien_tool.sum()) / len(reqs))
 
 
+# ---------- Nhiệm vụ D1 · Cỡ mẫu pilot ----------
+def co_mau(p1, p2, alpha=0.05, power=0.80):
+    """Cỡ mẫu mỗi nhóm để so sánh hai tỉ lệ với kiểm định hai phía."""
+    chuan = NormalDist()
+    z_alpha = chuan.inv_cdf(1 - alpha / 2)
+    z_power = chuan.inv_cdf(power)
+    p_trung_binh = (p1 + p2) / 2
+    sd_gop = math.sqrt(2 * p_trung_binh * (1 - p_trung_binh))
+    sd_rieng = math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))
+    return math.ceil(((z_alpha * sd_gop + z_power * sd_rieng) / (p2 - p1)) ** 2)
+
+
+def in_co_mau_pilot(reqs):
+    baseline, muc_tieu_5_diem, muc_tieu_6_diem = 0.70, 0.75, 0.76
+    icc = 0.02
+    nhan_vien_moi_nhom, depot_moi_nhom = 20, 6
+
+    n_5_diem = co_mau(baseline, muc_tieu_5_diem)
+    yeu_cau_moi_nguoi = 75
+    de_75 = 1 + (yeu_cau_moi_nguoi - 1) * icc
+    n_theo_nhan_vien = math.ceil(n_5_diem * de_75)
+    so_nhan_vien_can = math.ceil(n_theo_nhan_vien / yeu_cau_moi_nguoi)
+
+    n_6_diem = co_mau(baseline, muc_tieu_6_diem)
+    # Giải c*m / (1 + (m - 1)*ICC) >= n theo m, với c = 20.
+    m_toi_thieu = math.ceil(n_6_diem * (1 - icc) / (nhan_vien_moi_nhom - n_6_diem * icc))
+    de_pilot = 1 + (m_toi_thieu - 1) * icc
+    n_thuc_te = nhan_vien_moi_nhom * m_toi_thieu
+
+    # Power xấp xỉ hai phía với Cohen's h và hai nhóm bằng nhau.
+    chuan = NormalDist()
+    z_alpha = chuan.inv_cdf(0.975)
+    h_5_diem = 2 * (math.asin(math.sqrt(muc_tieu_5_diem)) - math.asin(math.sqrt(baseline)))
+    dich_chuyen_z = h_5_diem * math.sqrt(n_6_diem / 2)
+    power_5_diem = chuan.cdf(dich_chuyen_z - z_alpha) + chuan.cdf(-dich_chuyen_z - z_alpha)
+
+    print('\nD1 · Cỡ mẫu pilot')
+    print(f'a) Theo yêu cầu: {n_5_diem} yêu cầu mỗi nhóm.')
+    print(f'b) Theo nhân viên, m = {yeu_cau_moi_nguoi}: DE = {de_75:.2f}, '
+          f'{n_theo_nhan_vien} yêu cầu và {so_nhan_vien_can} nhân viên mỗi nhóm '
+          f'({2 * so_nhan_vien_can} người so với {2 * nhan_vien_moi_nhom} người có sẵn).')
+    print(f'c) Theo nhân viên: cỡ mẫu hiệu dụng < {nhan_vien_moi_nhom / icc:.0f} mỗi nhóm.')
+    print(f'd) Theo depot: cỡ mẫu hiệu dụng < {depot_moi_nhom / icc:.0f} mỗi nhóm.')
+    print(f'e) Chênh 6 điểm: cần {n_6_diem} yêu cầu hiệu dụng mỗi nhóm, '
+          f'ít nhất {m_toi_thieu} yêu cầu mỗi nhân viên, DE = {de_pilot:.2f}.')
+    print(f'   Mỗi nhóm có {n_thuc_te} yêu cầu thực tế, tương đương {n_thuc_te / de_pilot:.2f} hiệu dụng.')
+    print(f'   Nếu tác động thật là 5 điểm, power xấp xỉ {power_5_diem:.2f}.')
+
+    mo_lai = reqs['mo_lai_trong_7_ngay'].eq(1)
+    trong_pham_vi = reqs['loai'].isin(['noi_dia', 'hang_nang'])
+    in_ti_le('Mở lại trong 7 ngày (toàn bộ)', mo_lai.sum(), len(reqs))
+    in_ti_le('Mở lại trong 7 ngày (nội địa + hàng nặng)',
+             (mo_lai & trong_pham_vi).sum(), trong_pham_vi.sum())
+
+
+# ---------- Nhiệm vụ E1 · Chỉ số trên dữ liệu chạy thử ----------
+def tinh_chi_so_e1(reqs):
+    """Trả về tử số và mẫu số của từng chỉ số."""
+    dong_trong_24h = reqs['dong_trong_24h'].eq(1)
+    khong_mo_lai = reqs['mo_lai_trong_7_ngay'].eq(0)
+    mo_lai = reqs['mo_lai_trong_7_ngay'].eq(1)
+    da_xem_lai = reqs['duoc_xem_lai'].eq(1)
+    sua_hoac_bo = reqs['quyet_dinh_xem_lai'].isin(['sua', 'bo'])
+
+    return {
+        'Đóng trong 24 giờ và không mở lại trong 7 ngày': ((dong_trong_24h & khong_mo_lai).sum(), len(reqs)),
+        'Bỏ qua gợi ý trong số yêu cầu đã xem lại': ((da_xem_lai & sua_hoac_bo).sum(), da_xem_lai.sum()),
+        'Mở lại trong 7 ngày': (mo_lai.sum(), len(reqs)),
+    }
+
+
+def in_ti_le(ten, tu_so, mau_so):
+    if mau_so == 0:
+        print(f'{ten}: không xác định (không có yêu cầu).')
+        return
+    print(f'{ten}: {tu_so / mau_so:.2%} ({tu_so}/{mau_so})')
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -105,6 +185,8 @@ if __name__ == '__main__':
     print(f'  cps + cố định                {kq_pv["cps"] + co_dinh_moi_viec:8,.0f} đ = {(kq_pv["cps"] + co_dinh_moi_viec) / BASELINE:.2f}x')
     print(f'  nếu khối lượng giảm một nửa  {kq_pv["cps"] + co_dinh_nua:8,.0f} đ = {(kq_pv["cps"] + co_dinh_nua) / BASELINE:.2f}x (cố định {co_dinh_nua:,.0f} đ/việc)')
     # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    in_co_mau_pilot(reqs)
+
+    print('\nE1 · Chỉ số trong đợt chạy thử (dữ liệu giả lập)')
+    for ten, (tu_so, mau_so) in tinh_chi_so_e1(reqs).items():
+        in_ti_le(ten, tu_so, mau_so)
