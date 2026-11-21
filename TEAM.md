@@ -100,8 +100,17 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Giữ hồ sơ launch v0 từ đầu buổi: điền 7 mục khi có số (chi phí 4.472 đ, phạm vi pilot 0,38×, cả hệ thống 0,49×, ba yếu tố nhạy +51,8% · +40,7% · +23,1% [simulated]) và dòng đề xuất Go có điều kiện với 4 điều kiện, người phụ trách, ngày kiểm tra; sau đó thay bằng bản rút gọn của Tiến, ghi rõ ca 7. Có Claude Code hỗ trợ soạn nháp.
+- Gắn nhãn độc lập 20 ca (người gắn nhãn 2); ghép hai bộ nhãn vào `bang_loi.md` (đồng thuận 20/20), viết quy tắc phân biệt, chọn ca 14, 11 cho bảng khắc phục.
+- Viết D2 (5 câu tách được tác động) và nháp 3 luật dừng trong `pilot_plan.yaml`, đặt ngưỡng an toàn so với đối chứng vì mở lại hiện tại đã 3,97%; Sang rà và tách thành 4 luật.
+- Viết 3 dòng rủi ro kinh tế trong `chi_so.md` E2 (làm lại ×2 +51,8%; xem lại 100% 0,98×; khối lượng một nửa +2.370 đ/việc [simulated]).
+- Viết `group_report.md` mục 5, 7, 8; giải quyết xung đột merge ở `ho_so_launch_v0.md`.
 
 ### Bằng chứng
 
-- (commit, file, output)
+- [Báo cáo cá nhân và công cụ AI đã dùng](report/team/2A202603457_DaoThiThuPhuong.md).
+- [Hồ sơ launch](report/team/ho_so_launch_v0.md), [bảng lỗi](report/team/bang_loi.md), [D2 và luật dừng](report/team/pilot_plan.yaml), [rủi ro kinh tế E2](report/team/chi_so.md), [báo cáo nhóm](report/team/group_report.md).
+- [Commit `9c3659a`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/9c3659ae2df9ed714169a041ea4b3c12955b1549): hồ sơ 7 mục và đề xuất, `bang_loi.md`, D2 và luật dừng, E2.
+- [Commit `0869544`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/086954449e46b9ca01b56f7ef19be35e3c2a7d15): `group_report.md` mục 5, 7, 8; hồ sơ mục 4; báo cáo cá nhân.
+- [Commit `72152d1`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/72152d1f9b34af6e02c6d3c68bfe915b058cb5f7): merge với commit của Sang và Trường, giải quyết xung đột hồ sơ.
+- [Commit `3b983b0`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/3b983b0c944d2df99cc0c55c71e62f36aaec28a5): hồ sơ bản rút gọn, hoàn thiện báo cáo cá nhân.
