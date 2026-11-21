@@ -16,7 +16,7 @@
 #   1. Đối chứng chạy cùng thời gian: Có. 20 nhân viên đối chứng làm cùng tuần, cùng depot với 20 nhân viên dùng trợ lý.
 #   2. Chia ngẫu nhiên hay do người chọn: Ngẫu nhiên. Bốc thăm bằng code với seed ghi trước (seed = 2026), phân tầng theo depot.
 #   3. Ảnh hưởng gián tiếp và cách giảm: Có rủi ro nhân viên chia sẻ câu trả lời trong depot; giảm bằng quyền truy cập theo tài khoản, log lượt mở trợ lý theo staff_id.
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có. Chỉ số chính, mde 6 điểm, ba luật dừng và ngày quyết định chốt trước ngày bắt đầu.
+#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có. Chỉ số chính, mde 6 điểm, bốn luật dừng và ngày quyết định chốt trước ngày bắt đầu.
 #   5. Ít nhất 20 cụm mỗi nhóm: Có, đúng 20 nhân viên mỗi nhóm (chia theo depot chỉ có 6 cụm nên loại).
 #
 # Phương án D1 đề xuất: chia theo nhân viên để giảm ảnh hưởng gián tiếp giữa hai nhóm.
@@ -46,15 +46,20 @@ pilot:
   identifiability:
     concurrent_control: "Có: 20 nhân viên đối chứng làm cùng tuần, cùng depot; chia ngẫu nhiên bằng code, seed 2026, phân tầng theo depot"
     spillover_risk: "Nhân viên chia sẻ câu trả lời của trợ lý trong cùng depot; giảm bằng quyền truy cập theo tài khoản và log lượt mở trợ lý theo staff_id"
-    predeclared: "Chỉ số chính, mde 0,06, ba luật dừng và ngày quyết định chốt trước ngày bắt đầu pilot"
+    predeclared: "Chỉ số chính, mde 0,06, bốn luật dừng và ngày quyết định chốt trước ngày bắt đầu pilot"
   stop_rules:
+    # Hoàn trùng là sự cố cần dừng ngay, không áp dụng thời gian chờ 3 ngày của chỉ số mở lại.
+    - "NẾU có ít nhất 1 quyền lợi với hơn 1 refund_id có status=success, phát hiện từ refund_ledger_write theo order_id + entitlement_id sau khi khử bản ghi lặp, TRONG toàn bộ pilot qua giám sát liên tục THÌ Giám đốc vận hành tắt trợ lý trong 30 phút từ cảnh báo và chuyển toàn bộ về nhân viên KHÔNG THÌ tiếp tục giám sát hoàn trùng; chỉ tăng rollout khi các luật còn lại cũng đạt"
     # Ngưỡng an toàn so với đối chứng + trần tuyệt đối, vì mở lại hiện tại đã là 3,97% trong phạm vi (4,25% toàn bộ)
-    - "NẾU tỉ lệ mở lại 7 ngày của nhóm trợ lý cao hơn đối chứng từ 2 điểm trở lên hoặc vượt 6%, hoặc có từ 1 ca hoàn tiền trùng, TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và chuyển toàn bộ về nhân viên KHÔNG THÌ không được sang bước rollout tiếp theo"
+    # Dùng cohort cùng kỳ tiếp nhận ở hai nhánh, đủ 7 ngày theo dõi sau đóng theo chi_so.md.
+    # Vẫn giữ yêu cầu chưa đóng trong mẫu số. Chưa đủ theo dõi hoặc mẫu số bằng 0: ghi chưa đủ dữ liệu,
+    # không tính là 0%, không tính là một ngày đạt an toàn và chưa được tăng rollout.
+    - "NẾU tỉ lệ mở lại 7 ngày của nhóm trợ lý cao hơn đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6% trên cohort đã đủ theo dõi, TRONG 3 lần kiểm tra hằng ngày liên tiếp đều đủ dữ liệu THÌ Giám đốc vận hành tắt trợ lý trong 30 phút từ lần kiểm tra thứ ba và chuyển toàn bộ về nhân viên KHÔNG THÌ tiếp tục giám sát hằng ngày; chỉ tăng rollout khi đủ dữ liệu và các luật còn lại cũng đạt"
     # Chi phí: gốc trong phạm vi 3.414 đ, cộng cố định 4.599 đ; xem lại 100% đã là 11.743 đ (simulated)
-    - "NẾU chi phí mỗi việc thành công (đã cộng cố định) vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về noi_dia và giới hạn 2 lần chạy trong 2 ngày làm việc KHÔNG THÌ không được mở lại hang_nang"
+    - "NẾU chi phí mỗi việc thành công (đã cộng cố định) vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về noi_dia và giới hạn 2 lần chạy trong 2 ngày làm việc KHÔNG THÌ giữ phạm vi và giới hạn hiện tại, tiếp tục theo dõi chi phí hằng tuần"
     # Mức sử dụng: tỉ lệ bỏ qua gợi ý trong đợt chạy thử là 27,12% (48/177)
-    - "NẾU tỉ lệ bỏ qua gợi ý (sửa + bỏ) vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên và báo nguyên nhân trong 3 ngày KHÔNG THÌ không được chuyển bước rollout"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"
+    - "NẾU tỉ lệ bỏ qua gợi ý (sửa + bỏ trên tổng yêu cầu đã xem lại có quyết định cuối) vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên, báo nguyên nhân trong 3 ngày và giữ bước rollout hiện tại đến khi xử lý xong KHÔNG THÌ tiếp tục theo dõi hằng tuần; chỉ tăng rollout khi các luật còn lại cũng đạt"
+  interim_looks: "Giám sát an toàn liên tục/hằng ngày và chi phí, mức sử dụng theo cửa sổ của luật dừng; không kiểm định sớm hiệu quả chỉ số chính. Mẫu số bằng 0 hoặc thiếu dữ liệu thì ghi chưa đủ dữ liệu và giữ bước rollout hiện tại"
   rollback: "Giám đốc vận hành bật cờ tắt trợ lý, hiệu lực trong 30 phút; khách được phục vụ bằng luồng nhân viên tự làm như hiện tại"
   decision_date: "2027-01-08"
   simulated_inputs:               # liệt kê mọi con số giả lập đã dùng

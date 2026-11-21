@@ -61,11 +61,15 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Đối chiếu A2 và B1. Chi phí xem lại A2 là 890 phút × 2.000 đ = 1.780.000 đ [simulated]. Ở B1, mức giảm bằng một nửa mức tăng khi tính trước khi làm tròn.
+- Triển khai D1 với hỗ trợ của Codex. Tính năm câu cỡ mẫu, tỉ lệ mở lại trong 7 ngày và điền thông số cỡ mẫu vào `pilot_plan.yaml`. Phương án chia theo nhân viên cần 20 người mỗi nhóm và ít nhất 299 yêu cầu mỗi người để phát hiện chênh lệch 6 điểm phần trăm.
+- Triển khai E1 với hỗ trợ của Codex. Tính và ghi ba chỉ số chạy thử trên dữ liệu giả lập vào `chi_so.md` (82,83%, 27,12% và 4,25%).
 
 ### Bằng chứng
 
-- (commit, file, output)
+- [Bảng chi phí và mục Kiểm số](report/team/bang_chi_phi.md#kiểm-số)
+- [Commit D1/E1 `8fec924`](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8fec9246cee26c2492d61cfd6d6b325decec0bc7) · [Mã tính toán](src/lab13.py) · [Kế hoạch pilot](report/team/pilot_plan.yaml) · [Bảng chỉ số](report/team/chi_so.md)
+- [Báo cáo cá nhân](report/team/2A202603459_PhanNhatTruong.md)
 
 ## Nguyễn Ngọc Sang - 2A202603444
 
@@ -75,11 +79,16 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Soạn và rà hai chỉ số đề xuất, danh sách event cùng ánh xạ chỉ số–event trong `chi_so.md`, có ChatGPT/Codex hỗ trợ.
+- Rà cách phát hiện và khắc phục năm ca trong `bang_loi.md`; phân biệt ghi sổ với ghi có, giờ đóng ticket với giờ gửi thông báo và bổ sung dữ liệu xử lý đầu vào không hỗ trợ.
+- Rà luật dừng trong `pilot_plan.yaml`, tách hoàn trùng để dừng trong 30 phút và làm rõ thời gian theo dõi của chỉ số mở lại; đồng bộ hồ sơ launch.
+- Chuẩn bị phiếu chấm; chưa chấm nhóm bạn do chưa có hồ sơ. Kết quả gắn nhãn độc lập cần đối chiếu hai bản gốc trước khi xác nhận.
 
 ### Bằng chứng
 
-- (commit, file, output)
+- [Báo cáo cá nhân và công cụ AI đã dùng](report/team/2A202603444_NguyenNgocSang.md).
+- [Đặc tả chỉ số và event](report/team/chi_so.md), [bảng khắc phục](report/team/bang_loi.md), [luật dừng pilot](report/team/pilot_plan.yaml), [hồ sơ launch](report/team/ho_so_launch_v0.md).
+- Mã commit: bổ sung sau khi nhóm lưu thay đổi vào Git.
 
 ## Đào Thị Thu Phương - 2A202603457
 
