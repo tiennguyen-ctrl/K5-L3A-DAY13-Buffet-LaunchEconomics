@@ -75,11 +75,16 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Soạn và rà hai chỉ số đề xuất, danh sách event cùng ánh xạ chỉ số–event trong `chi_so.md`, có ChatGPT/Codex hỗ trợ.
+- Rà cách phát hiện và khắc phục năm ca trong `bang_loi.md`; phân biệt ghi sổ với ghi có, giờ đóng ticket với giờ gửi thông báo và bổ sung dữ liệu xử lý đầu vào không hỗ trợ.
+- Rà luật dừng trong `pilot_plan.yaml`, tách hoàn trùng để dừng trong 30 phút và làm rõ thời gian theo dõi của chỉ số mở lại; đồng bộ hồ sơ launch.
+- Chuẩn bị phiếu chấm; chưa chấm nhóm bạn do chưa có hồ sơ. Kết quả gắn nhãn độc lập cần đối chiếu hai bản gốc trước khi xác nhận.
 
 ### Bằng chứng
 
-- (commit, file, output)
+- [Báo cáo cá nhân và công cụ AI đã dùng](report/team/2A202603444_NguyenNgocSang.md).
+- [Đặc tả chỉ số và event](report/team/chi_so.md), [bảng khắc phục](report/team/bang_loi.md), [luật dừng pilot](report/team/pilot_plan.yaml), [hồ sơ launch](report/team/ho_so_launch_v0.md).
+- Mã commit: bổ sung sau khi nhóm lưu thay đổi vào Git.
 
 ## Đào Thị Thu Phương - 2A202603457
 
