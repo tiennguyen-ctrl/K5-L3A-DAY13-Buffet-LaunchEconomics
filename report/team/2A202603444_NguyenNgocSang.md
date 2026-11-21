@@ -31,7 +31,7 @@
 - [Hồ sơ launch v0](ho_so_launch_v0.md).
 - [Phiếu chấm đang chờ hồ sơ nhóm bạn](phieu_cham.md).
 - [Commit `17e8ae2` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/17e8ae214c5aa6e74330bda7c3ae185ba08bf8a7): lưu báo cáo cá nhân, đặc tả event, bảng khắc phục và các sửa đổi luật dừng, hồ sơ launch, phiếu chấm, `TEAM.md`.
-- [Báo cáo nhóm](group_report.md): phần C–E, đề xuất và giới hạn cỡ mẫu đã rà bổ sung sau commit trên; mã commit của lần bổ sung này sẽ ghi khi lưu vào Git.
+- [Commit `8b424d9` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8b424d9d7326f1b62b89ed2cfb0df5ca8cd43d2c): cập nhật phần C–E, đề xuất Go có điều kiện và giới hạn cỡ mẫu trong [báo cáo nhóm](group_report.md); bổ sung hai chỉ số vào hồ sơ launch, đồng bộ trạng thái chờ đối chiếu nhãn gốc và chuẩn bị câu hỏi duyệt chéo.
 
 ## 5. Công cụ AI đã dùng
 

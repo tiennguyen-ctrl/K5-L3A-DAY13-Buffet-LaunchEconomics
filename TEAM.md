@@ -90,7 +90,7 @@ Sao chép mục dưới đây cho từng thành viên.
 - [Báo cáo cá nhân và công cụ AI đã dùng](report/team/2A202603444_NguyenNgocSang.md).
 - [Đặc tả chỉ số và event](report/team/chi_so.md), [bảng khắc phục](report/team/bang_loi.md), [luật dừng pilot](report/team/pilot_plan.yaml), [hồ sơ launch](report/team/ho_so_launch_v0.md).
 - [Commit `17e8ae2` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/17e8ae214c5aa6e74330bda7c3ae185ba08bf8a7): báo cáo cá nhân, đặc tả event, bảng khắc phục, luật dừng và hồ sơ liên quan.
-- [Báo cáo nhóm](report/team/group_report.md): rà bổ sung sau commit trên; mã commit của lần bổ sung sẽ ghi khi lưu vào Git.
+- [Commit `8b424d9` — Sangcommit](https://github.com/tiennguyen-ctrl/K5-L3A-DAY13-Buffet-LaunchEconomics/commit/8b424d9d7326f1b62b89ed2cfb0df5ca8cd43d2c): cập nhật phần C–E, đề xuất và giới hạn cỡ mẫu trong [báo cáo nhóm](report/team/group_report.md); bổ sung hai chỉ số vào hồ sơ launch, đồng bộ trạng thái bằng chứng nhãn và chuẩn bị câu hỏi duyệt chéo.
 
 ## Đào Thị Thu Phương - 2A202603457
 
