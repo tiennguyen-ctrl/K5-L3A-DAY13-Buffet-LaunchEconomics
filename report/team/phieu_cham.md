@@ -23,11 +23,7 @@ Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo b
 
 **Một câu hỏi cho đội trình:** Luật dừng dùng tỉ lệ mở lại 7 ngày >5% ngay trong 7 ngày đầu. Với yêu cầu vừa đóng vào cuối tuần đầu, nhóm chọn cohort và mẫu số thế nào để không coi dữ liệu chưa đủ theo dõi là không mở lại, và ngày quyết định sẽ lùi ra sao nếu cần chờ đủ cửa sổ 7 ngày?
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** Nhóm sẽ chia cohort theo cùng kỳ tiếp nhận yêu cầu ở hai nhánh can thiệp và đối chứng. Mẫu số vẫn là tổng số yêu cầu trong cohort, đúng định nghĩa chỉ số ban đầu; tử số là số yêu cầu mở lại trong bảy ngày sau lần đóng đầu tiên.
-
-Chỉ chốt tỷ lệ khi các yêu cầu đã đóng trong cohort đều đủ bảy ngày theo dõi sau đóng. Yêu cầu chưa đủ thời gian được ghi “chưa đủ dữ liệu”; yêu cầu chưa đóng được báo riêng và giữ trong mẫu số. Không mặc định các ca này là “không mở lại”. Vì vậy, tuần đầu chưa thể dùng tỷ lệ chưa hoàn chỉnh để kết luận an toàn hoặc tăng rollout.
-
-Ngày quyết định chỉ được chốt khi cả hai nhánh đủ cỡ mẫu và đủ cửa sổ theo dõi. Nếu yêu cầu cuối cùng của tập đánh giá đóng ngày 19/12/2026, ngày quyết định sớm nhất phải lùi đến 26/12/2026, cùng thời điểm trong ngày; nếu vẫn thiếu mẫu hoặc dữ liệu thì tiếp tục lùi.
+**Câu trả lời của đội trình (ghi lại tại buổi):** (chưa có; ghi lại nguyên văn câu trả lời thực tế của ALOALO tại buổi duyệt chéo 17:25)
 
 ## Các điểm cần sửa và kiểm số bổ sung
 
