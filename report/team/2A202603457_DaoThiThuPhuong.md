@@ -19,7 +19,7 @@
 ## 3. Đóng góp cụ thể
 
 - Hồ sơ launch v0 (`ho_so_launch_v0.md`): điền đủ 7 mục, mỗi mục có con số chính, trạng thái, một vai trò phụ trách. Mục 1: 4.472 đ; phạm vi noi_dia + hang_nang cộng cố định 4.599 đ = 0,38×. Mục 3: chi phí cả hệ thống 5.865 đ = 0,49×. Mục 2: làm lại +51,8% · xem lại +40,7% · lương +23,1% [simulated].
-- Dòng đề xuất **Go có điều kiện** với 4 điều kiện (người phụ trách, ngày kiểm tra), nêu rõ ba con số bất lợi: xem lại 100% = 0,98×, power 0,64, mở lại 3,97%.
+- Dòng đề xuất **Go có điều kiện** (nhóm trưởng Tiến đã chốt) với 4 điều kiện (người phụ trách, ngày kiểm tra), nêu rõ ba con số bất lợi: xem lại 100% = 0,98×, power 0,64, mở lại 3,97%.
 - CP3: gắn nhãn độc lập 20 ca (người gắn nhãn 2); so với Sang đồng thuận 20/20; chọn 2 ca (14, 11) trong bảng khắc phục; tổng hợp `bang_loi.md`.
 - CP4: viết D2 (5 câu tách được tác động) và nháp 3 luật dừng (an toàn, chi phí, mức sử dụng) đủ NẾU – TRONG – THÌ – KHÔNG THÌ trong `pilot_plan.yaml`; ngưỡng an toàn so với đối chứng vì mở lại hiện tại đã 3,97%. Sang rà và tách luật hoàn trùng thành luật riêng, bản cuối có 4 luật dừng.
 - CP5: 3 dòng rủi ro kinh tế trong `chi_so.md` E2.
