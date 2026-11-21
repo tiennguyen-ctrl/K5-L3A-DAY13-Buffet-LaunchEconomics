@@ -184,7 +184,67 @@ if __name__ == '__main__':
     print(f'  cố định mỗi việc             {co_dinh_moi_viec:8,.0f} đ')
     print(f'  cps + cố định                {kq_pv["cps"] + co_dinh_moi_viec:8,.0f} đ = {(kq_pv["cps"] + co_dinh_moi_viec) / BASELINE:.2f}x')
     print(f'  nếu khối lượng giảm một nửa  {kq_pv["cps"] + co_dinh_nua:8,.0f} đ = {(kq_pv["cps"] + co_dinh_nua) / BASELINE:.2f}x (cố định {co_dinh_nua:,.0f} đ/việc)')
-    # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
+    # ---------- Nhiệm vụ B1 · Đổi từng yếu tố (simulated) ----------
+    kich_ban = {
+        'Giá token gấp đôi':      dict(gia_vao=52, gia_ra=260),
+        'Giá token giảm một nửa': dict(gia_vao=13, gia_ra=65),
+        'Xem lại gấp đôi':        dict(he_so_xem_lai=2),
+        'Xem lại giảm một nửa':   dict(he_so_xem_lai=0.5),
+        'Làm lại gấp đôi':        dict(he_so_lam_lai=2),
+        'Làm lại giảm một nửa':   dict(he_so_lam_lai=0.5),
+        'Lương tăng 25%':         dict(luong_phut=2500),
+        'Tối đa 2 lần chạy':      dict(max_lan_chay=2),
+        'Chỉ 1 lần chạy':         dict(max_lan_chay=1),
+    }
+    goc = mo_hinh(runs, reqs)['cps']
+    print('\nB1 · Đổi từng yếu tố [simulated]')
+    print(f"{'Kịch bản':26s} {'cps (đ)':>9s} {'Thay đổi':>9s}")
+    print(f"{'Gốc (A2)':26s} {goc:9,.0f}")
+    for ten, kw in kich_ban.items():
+        cps = mo_hinh(runs, reqs, **kw)['cps']
+        print(f'{ten:26s} {cps:9,.0f} {(cps / goc - 1) * 100:+8.1f}%')
+
+    # ---------- Nhiệm vụ B2 · Đổi một cặp và xếp hạng ----------
+    cap = mo_hinh(runs, reqs, gia_vao=52, gia_ra=260, he_so_xem_lai=2)['cps']
+    print(f'\nB2 · Giá token gấp đôi + xem lại gấp đôi: {cap:,.0f} đ ({(cap / goc - 1) * 100:+.1f}%) [simulated]')
+    tac_dong = {
+        'Số ca làm lại': mo_hinh(runs, reqs, he_so_lam_lai=2)['cps'] / goc - 1,
+        'Tỉ lệ xem lại': mo_hinh(runs, reqs, he_so_xem_lai=2)['cps'] / goc - 1,
+        'Lương nhân viên (+25%)': mo_hinh(runs, reqs, luong_phut=2500)['cps'] / goc - 1,
+        'Giá token': mo_hinh(runs, reqs, gia_vao=52, gia_ra=260)['cps'] / goc - 1,
+    }
+    for i, (ten, v) in enumerate(sorted(tac_dong.items(), key=lambda x: -x[1]), 1):
+        print(f'  {i}. {ten:24s} {v * 100:+.1f}%')
+
+    # ---------- Nhiệm vụ B3 · Giới hạn chạy lại: chi phí cả hệ thống ----------
+    print('\nB3 · Giới hạn chạy lại [simulated]  (cả hệ thống = tổng trợ lý + 12.000 đ x yêu cầu không thành công)')
+    print(f"{'Giới hạn':>9s} {'Tổng trợ lý':>12s} {'Không TC':>9s} {'Cả hệ thống':>12s} {'cps':>8s}")
+    for k in (1, 2, 3):
+        kq = mo_hinh(runs, reqs, max_lan_chay=k)
+        khong_tc = len(reqs) - kq['thanh_cong']
+        he_thong = kq['tong'] + BASELINE * khong_tc
+        print(f"{k:>9d} {kq['tong']:12,.0f} {khong_tc:9d} {he_thong:12,.0f} {kq['cps']:8,.0f}")
+
+    # ---------- Nhiệm vụ B4 · Nếu phải xem lại 100% (noi_dia + hang_nang) ----------
+    pv = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    runs_pv = runs[runs['request_id'].isin(pv['request_id'])]
+    token_tool = ((runs_pv['tokens_in'] / 1000 * GIA_VAO + runs_pv['tokens_out'] / 1000 * GIA_RA).sum()
+                  + (runs_pv['tool_calls'] * GIA_TOOL).sum())
+    co_ok = runs_pv[runs_pv['status'] == 'ok']['request_id'].nunique()   # yêu cầu có ít nhất một lần chạy ok
+    so_lam_lai = (pv['ket_qua'] == 'lam_lai').sum()
+    thanh_cong_pv = (pv['ket_qua'] == 'thanh_cong').sum()
+    phut_lam_lai_tb = reqs.loc[reqs['ket_qua'] == 'lam_lai', 'phut_lam_lai_simulated'].mean()
+    print('\nB4 · Xem lại 100% (noi_dia + hang_nang) [simulated]')
+    for phut_lam in (9, phut_lam_lai_tb):
+        xem = co_ok * 5 * LUONG_PHUT
+        lam = so_lam_lai * phut_lam * LUONG_PHUT
+        tong = xem + lam + token_tool
+        hoa_von = (BASELINE * thanh_cong_pv - token_tool - lam) / (co_ok * LUONG_PHUT)
+        print(f'  làm lại {phut_lam:4.1f} phút/ca: tổng {tong:12,.0f} đ / {thanh_cong_pv} việc = {tong / thanh_cong_pv:7,.0f} đ '
+              f'= {tong / thanh_cong_pv / BASELINE:.2f}x  (hoà vốn: xem lại <= {hoa_von:.1f} phút/lần)')
+    print(f'  ({co_ok} yêu cầu có lần chạy ok x 5 phút; {so_lam_lai} ca làm lại; token+tool {token_tool:,.0f} đ)')
+    # TODO CP2 đã xong ở trên.
+
     in_co_mau_pilot(reqs)
 
     print('\nE1 · Chỉ số trong đợt chạy thử (dữ liệu giả lập)')
