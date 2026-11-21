@@ -77,7 +77,33 @@ if __name__ == '__main__':
     ket_qua = mo_hinh(runs, reqs)
     for ten, gia_tri in ket_qua.items():
         print(f'{ten:12s} {gia_tri:>14,.0f}')
-    # TODO CP1 · Nhiệm vụ A3: tính lại theo từng giá trị của cột loai.
+    # ---------- Nhiệm vụ A3 · Tách theo loại yêu cầu (số chi phí là simulated) ----------
+    print('\nA3 · Theo loại yêu cầu [simulated]')
+    print(f"{'loai':10s} {'so_yc':>6s} {'thanh_cong':>11s} {'lan_chay/yc':>12s} {'cps (d)':>9s} {'/12.000':>8s}")
+    for loai in ['noi_dia', 'hang_nang', 'quoc_te', 'doi_tac']:
+        r = reqs[reqs['loai'] == loai]
+        kq = mo_hinh(runs, r)
+        so_run = runs['request_id'].isin(r['request_id']).sum()
+        print(f"{loai:10s} {len(r):6d} {kq['thanh_cong'] / len(r):11.1%} {so_run / len(r):12.2f} "
+              f"{kq['cps']:9,.0f} {kq['cps'] / BASELINE:7.2f}x")
+    print('\nA3 · Tỉ lệ ok theo từng lần thử (attempt)')
+    ok = runs.merge(reqs[['request_id', 'loai']], on='request_id').assign(ok=lambda d: (d['status'] == 'ok').astype(int))
+    print(ok.pivot_table(index='loai', columns='attempt', values='ok', aggfunc='mean').round(3))
+
+    # ---------- Nhiệm vụ A4 · Cộng chi phí cố định (phạm vi pilot: noi_dia + hang_nang) ----------
+    CO_DINH_THANG = 40_000_000
+    YC_THANG = 45_000
+    pv = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    kq_pv = mo_hinh(runs, pv)
+    viec_thang = YC_THANG * kq_pv['thanh_cong'] / len(reqs)
+    co_dinh_moi_viec = CO_DINH_THANG / viec_thang
+    co_dinh_nua = CO_DINH_THANG / (viec_thang / 2)
+    print('\nA4 · Chi phí cố định, phạm vi noi_dia + hang_nang [simulated]')
+    print(f'  cps trong phạm vi            {kq_pv["cps"]:8,.0f} đ')
+    print(f'  việc thành công / tháng      {viec_thang:8,.0f}')
+    print(f'  cố định mỗi việc             {co_dinh_moi_viec:8,.0f} đ')
+    print(f'  cps + cố định                {kq_pv["cps"] + co_dinh_moi_viec:8,.0f} đ = {(kq_pv["cps"] + co_dinh_moi_viec) / BASELINE:.2f}x')
+    print(f'  nếu khối lượng giảm một nửa  {kq_pv["cps"] + co_dinh_nua:8,.0f} đ = {(kq_pv["cps"] + co_dinh_nua) / BASELINE:.2f}x (cố định {co_dinh_nua:,.0f} đ/việc)')
     # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
     # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
     #   from statsmodels.stats.proportion import proportion_effectsize
