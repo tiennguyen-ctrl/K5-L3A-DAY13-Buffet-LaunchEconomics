@@ -47,11 +47,16 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (điền cuối buổi)
+- Viết `src/lab13.py` phần A (ba hàm A1, `mo_hinh`, A3, A4) và B (B1–B4): chi phí mỗi việc thành công 4.472 đ, 16,3× hoá đơn token [simulated]; xếp hạng ba yếu tố nhạy nhất: làm lại +51,8%, xem lại +40,7%, lương +23,1% [simulated]; xem lại 100% = 0,98× (1,03× nếu làm lại 15,3 phút) [simulated].
+- Điền `bang_chi_phi.md` (A1–B4) và mục Kiểm số; Trường xác nhận khớp A2, B1.
+- Kiểm số D1 câu (e) bằng tay: m ≥ 299, khớp code của Trường; chạy kiểm `pilot_plan.yaml` bằng `yaml.safe_load` và không còn dấu `?`; rà bảng khắc phục và từ cấm trước khi nộp.
+- Nhóm trưởng: tạo repo, mời thành viên, lập `PHAN_CONG.md`, chốt đề xuất Go có điều kiện; trả lời câu hỏi của hội đồng ALOALO tại buổi duyệt chéo (nhóm được chấm 30/30); sau buổi duyệt chéo sửa ngày kiểm tra điều kiện 4 sang 2026-12-04 cho khớp câu trả lời.
+- Đóng gói, push bản chốt; nhắc cả nhóm nộp link repo trên LMS.
 
 ### Bằng chứng
 
-- (commit, file, output)
+- Commit `d55cdc7` (A1, `mo_hinh`), `15ec23d` (A3, A4, bảng A), `663632b` (B1–B4 trong code), `8efbc0e` (bảng B, mục Kiểm số), `c037690` (báo cáo cá nhân, group_report), `b17a3d1`, `317daea` (sửa phiếu và điều kiện 4).
+- [Bảng chi phí và mục Kiểm số](report/team/bang_chi_phi.md#kiểm-số) · [Mã tính toán](src/lab13.py) · [Báo cáo cá nhân](report/team/2A202603504_NguyenTranTien.md) · [Kế hoạch phân công](PHAN_CONG.md).
 
 ## Phan Nhật Trường - 2A202603459
 

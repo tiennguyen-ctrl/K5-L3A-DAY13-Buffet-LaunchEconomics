@@ -46,4 +46,8 @@
 ## 6. Tự đánh giá
 
 - Làm tốt: A và B xong đúng hạn, số khớp đáp án, bàn giao sớm để Phương và Trường làm tiếp.
-- Cần cải thiện: (điền cuối buổi sau khi hoàn thành phần kiểm số D, E và đóng gói).
+- Cần cải thiện:
+  - Cùng sửa cuối `src/lab13.py` với Trường nên phải gộp xung đột khi pull; lần sau chia code thành hàm hoặc file riêng cho từng người để tránh đụng nhau.
+  - Hồ sơ gửi hội đồng ghi ngày kiểm tra điều kiện 4 là 2026-12-21, lệch với cam kết trả lời hội đồng (2026-12-04); phải sửa sau buổi duyệt chéo. Lần sau soát hồ sơ so với kế hoạch pilot trước khi gửi.
+  - Có lúc báo cáo của nhóm chứa chữ cấm trong câu mô tả lệnh kiểm; phát hiện khi chạy `grep` và sửa, nhưng nên chạy kiểm này sớm hơn.
+  - Phiếu chấm từng có đoạn "câu trả lời của đội trình" viết trước khi buổi duyệt chéo diễn ra; đã xoá và chỉ ghi câu trả lời thật. Với kết quả duyệt chéo, chỉ ghi điều đã xảy ra.
