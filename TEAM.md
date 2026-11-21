@@ -16,7 +16,7 @@
 |   1 | Nguyễn Trần Tiến (nhóm trưởng) | 2A202603504 | nguyentien2004abc@gmail.com | tiennguyen-ctrl | Người viết code (A, B) → Người kiểm số (D, E); điều phối, nộp bài |
 |   2 | Phan Nhật Trường | 2A202603459 | Truong02052004@gmail.com | pnt0803 | Người kiểm số (A, B) → Người viết code (D, E) |
 |   3 | Nguyễn Ngọc Sang | 2A202603444 | nguyenngocsang051003@gmail.com | ngocsangnguyen | Người gắn nhãn 1; event, chỉ số đề xuất, phiếu chấm (không viết code) |
-|   4 | Đào Thị Thu Phương | 2A202603457 | phuongdtt1824@gmail.com | (điền) | Người gắn nhãn 2 kiêm giữ hồ sơ; luật dừng, hồ sơ launch v0 (không viết code) |
+|   4 | Đào Thị Thu Phương | 2A202603457 | phuongdtt1824@gmail.com | daothithuphuong-1801 | Người gắn nhãn 2 kiêm giữ hồ sơ; luật dừng, hồ sơ launch v0 (không viết code) |
 
 Bốn vai của lab:
 
