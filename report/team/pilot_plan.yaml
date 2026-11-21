@@ -13,11 +13,11 @@
 #      và 5.980 yêu cầu thực tế mỗi nhóm cho khoảng 859,20 yêu cầu hiệu dụng.
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian:
-#   2. Chia ngẫu nhiên hay do người chọn:
-#   3. Ảnh hưởng gián tiếp và cách giảm:
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
-#   5. Ít nhất 20 cụm mỗi nhóm:
+#   1. Đối chứng chạy cùng thời gian: Có. 20 nhân viên đối chứng làm cùng tuần, cùng depot với 20 nhân viên dùng trợ lý.
+#   2. Chia ngẫu nhiên hay do người chọn: Ngẫu nhiên. Bốc thăm bằng code với seed ghi trước (seed = 2026), phân tầng theo depot.
+#   3. Ảnh hưởng gián tiếp và cách giảm: Có rủi ro nhân viên chia sẻ câu trả lời trong depot; giảm bằng quyền truy cập theo tài khoản, log lượt mở trợ lý theo staff_id.
+#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có. Chỉ số chính, mde 6 điểm, ba luật dừng và ngày quyết định chốt trước ngày bắt đầu.
+#   5. Ít nhất 20 cụm mỗi nhóm: Có, đúng 20 nhân viên mỗi nhóm (chia theo depot chỉ có 6 cụm nên loại).
 #
 # Phương án D1 đề xuất: chia theo nhân viên để giảm ảnh hưởng gián tiếp giữa hai nhóm.
 # Thiết kế nhắm chênh 6 điểm với 20 nhân viên mỗi nhóm và ít nhất 299 yêu cầu mỗi người.
@@ -27,8 +27,8 @@
 # và 3,97% (39/982) trong phạm vi noi_dia + hang_nang.
 
 pilot:
-  owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
-  scope: "?"                      # loại yêu cầu nào, depot nào; dựa vào kết quả A3
+  owner: "Giám đốc vận hành LogiX-VN"   # một người có tên vai trò, không ghi "cả đội"
+  scope: "Chỉ noi_dia và hang_nang (0,22× và 0,69× so với 12.000 đ, simulated); loại quoc_te (1,88×, thành công 27,3%) và doi_tac (0,85×, điều khoản riêng)"
   assignment:
     unit: staff
     control_share: 0.5
@@ -44,14 +44,22 @@ pilot:
     design_effect: 6.96
     clusters_per_arm: 20
   identifiability:
-    concurrent_control: "?"
-    spillover_risk: "?"
-    predeclared: "?"
+    concurrent_control: "Có: 20 nhân viên đối chứng làm cùng tuần, cùng depot; chia ngẫu nhiên bằng code, seed 2026, phân tầng theo depot"
+    spillover_risk: "Nhân viên chia sẻ câu trả lời của trợ lý trong cùng depot; giảm bằng quyền truy cập theo tài khoản và log lượt mở trợ lý theo staff_id"
+    predeclared: "Chỉ số chính, mde 0,06, ba luật dừng và ngày quyết định chốt trước ngày bắt đầu pilot"
   stop_rules:
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
+    # Ngưỡng an toàn so với đối chứng + trần tuyệt đối, vì mở lại hiện tại đã là 3,97% trong phạm vi (4,25% toàn bộ)
+    - "NẾU tỉ lệ mở lại 7 ngày của nhóm trợ lý cao hơn đối chứng từ 2 điểm trở lên hoặc vượt 6%, hoặc có từ 1 ca hoàn tiền trùng, TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và chuyển toàn bộ về nhân viên KHÔNG THÌ không được sang bước rollout tiếp theo"
+    # Chi phí: gốc trong phạm vi 3.414 đ, cộng cố định 4.599 đ; xem lại 100% đã là 11.743 đ (simulated)
+    - "NẾU chi phí mỗi việc thành công (đã cộng cố định) vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về noi_dia và giới hạn 2 lần chạy trong 2 ngày làm việc KHÔNG THÌ không được mở lại hang_nang"
+    # Mức sử dụng: tỉ lệ bỏ qua gợi ý trong đợt chạy thử là 27,12% (48/177)
+    - "NẾU tỉ lệ bỏ qua gợi ý (sửa + bỏ) vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên và báo nguyên nhân trong 3 ngày KHÔNG THÌ không được chuyển bước rollout"
   interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "?"                   # ai bấm, mất bao lâu, khách được phục vụ bằng gì
-  decision_date: "?"
-  simulated_inputs: ["?"]         # liệt kê mọi con số giả lập đã dùng
+  rollback: "Giám đốc vận hành bật cờ tắt trợ lý, hiệu lực trong 30 phút; khách được phục vụ bằng luồng nhân viên tự làm như hiện tại"
+  decision_date: "2027-01-08"
+  simulated_inputs:               # liệt kê mọi con số giả lập đã dùng
+    - "phut_xem_lai_simulated, phut_lam_lai_simulated trong logix_runs.csv"
+    - "Chi phí mỗi việc thành công 4.472 đ, trong phạm vi 3.414 đ, cộng cố định 4.599 đ (0,38×)"
+    - "Chi phí cả hệ thống 5.865 đ/yêu cầu (0,49×)"
+    - "Độ nhạy B1-B4: làm lại x2 +51,8%, xem lại x2 +40,7%, xem lại 100% 0,98x / 1,03x"
+    - "Chỉ số chạy thử: 82,83%, 27,12%, mở lại 4,25% (3,97% trong phạm vi)"
